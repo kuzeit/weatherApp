@@ -215,6 +215,7 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:weatherapp/core/constant/app_theme.dart';
 
 import '../../model/weather_data_current.dart';
 import '../../core/constant/app_assets.dart';
@@ -240,23 +241,23 @@ class CurrentWeatherMoreDetailsWidget extends StatelessWidget {
         currentWeatherCardWidget(
           AppAssets.clouds,
           "${weatherDataCurrent.current.clouds}%",
-
         ),
         currentWeatherCardWidget(
           AppAssets.humidity,
           "${weatherDataCurrent.current.humidity}%",
-
         ),
       ],
     );
   }
 
-  Widget currentWeatherCardWidget(String imagePath,
-      String details,) {
+  Widget currentWeatherCardWidget(
+    String imagePath,
+    String details,
+  ) {
     final iconSize = 18.0.w;
 
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 3.w,vertical:0.7.h ),
+      padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 0.7.h),
       decoration: BoxDecoration(
         color: CustomColors.cardColor,
         borderRadius: BorderRadius.circular(15),
@@ -266,7 +267,7 @@ class CurrentWeatherMoreDetailsWidget extends StatelessWidget {
           Container(
             height: iconSize,
             width: iconSize,
-            padding: EdgeInsets.symmetric(horizontal: 3.2.w,vertical:0.1.h ),
+            padding: EdgeInsets.symmetric(horizontal: 3.2.w, vertical: 0.1.h),
             child: Image.asset(imagePath),
           ),
           SizedBox(
@@ -274,8 +275,8 @@ class CurrentWeatherMoreDetailsWidget extends StatelessWidget {
             width: 18.w,
             child: Text(
               details,
-              style: TextStyle(fontSize: 12.sp),
               textAlign: TextAlign.center,
+              style:AppTheme.textTheme.bodyText1
             ),
           ),
         ],

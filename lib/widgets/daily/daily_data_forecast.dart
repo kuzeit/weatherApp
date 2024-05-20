@@ -5,6 +5,7 @@ import 'package:weatherapp/model/weather_data_daily.dart';
 import 'package:weatherapp/core/constant/custom_colors.dart';
 import 'package:weatherapp/widgets/daily/daily_list.dart';
 
+import '../../core/constant/app_theme.dart';
 import '../../core/utils/api_url.dart';
 
 class DailyDataForecast extends StatelessWidget {
@@ -32,11 +33,9 @@ class DailyDataForecast extends StatelessWidget {
             alignment: Alignment.topLeft,
              child: Text(
               "Next Days",
-              style: TextStyle(
-                color: CustomColors.textColorBlack,
-                fontSize: 15.0.sp,
-              ),
-            ),
+                 style:AppTheme.textTheme.bodyText2
+
+             ),
           ),
 DailyList(weatherDataDaily: weatherDataDaily)        ],
       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../core/constant/app_theme.dart';
 import '../../model/weather_data_daily.dart';
 import '../../core/utils/api_url.dart';
 import '../../core/constant/custom_colors.dart';
@@ -32,13 +33,8 @@ class DailyList extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: 25.0.w,
-                      child: Text(
-                        getDay(weatherDataDaily.daily[index].dt),
-                        style: TextStyle(
-                          color: CustomColors.textColorBlack,
-                          fontSize: 12.sp,
-                        ),
-                      ),
+                      child: Text(getDay(weatherDataDaily.daily[index].dt),
+                          style: AppTheme.textTheme.bodyText1),
                     ),
                     SizedBox(
                         height: 9.375.h,
@@ -48,6 +44,7 @@ class DailyList extends StatelessWidget {
                                 .daily[index].weather![0].icon!))),
                     Text(
                       "${weatherDataDaily.daily[index].maxTemp}°/${weatherDataDaily.daily[index].minTemp}",
+                      style: AppTheme.textTheme.bodyText1,
                     ),
                   ],
                 ),

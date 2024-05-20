@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../core/constant/app_theme.dart';
 import '../../model/weather_data_current.dart';
 import '../../core/utils/api_url.dart';
 import '../../core/constant/custom_colors.dart';
@@ -19,15 +20,15 @@ class TemperatureAreaWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Container(
-          child: NetworkImageWidget(
-            imageUrl: generateWeatherIconUrl(
+           child:NetworkImageWidget(
+            imageUrl:generateWeatherIconUrl(
                 weatherDataCurrent.current.weather![0].icon!),
             height: 16.h,
             width: 35.w,
           ),
         ),
         Container(
-          height: 16.h,
+          height:16.h,
           width: 1,
           color: CustomColors.dividerLine,
         ),
@@ -37,30 +38,23 @@ class TemperatureAreaWidget extends StatelessWidget {
               text: TextSpan(children: [
                 TextSpan(
                   text: "${weatherDataCurrent.current.temp!.toInt()}°",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 46.sp,
-                    color: CustomColors.textColorBlack,
-                  ),
+                    style:AppTheme.textTheme.headline1
+
                 ),
                 TextSpan(
                   text: "C",
-                  style: TextStyle(
-                    fontSize: 12.sp,
-                    color: CustomColors.textColorBlack,
-                  ),
+                    style:AppTheme.textTheme.bodyText1
+
                 ),
               ]),
             ),
             Text(
               weatherDataCurrent.current.weather![0].description!,
-              style: TextStyle(
-                fontSize: 12.sp,
-                color: CustomColors.textColorBlack,
-              ),
-            ),
-          ],
+                      style:AppTheme.textTheme.bodyText1
+
+            ), ],
         ),
+
       ],
     );
   }

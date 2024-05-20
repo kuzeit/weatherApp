@@ -20,7 +20,7 @@ class CustomColors {
   static const Color thirdColor = Color.fromARGB(255, 255, 179, 170);
   static const Color primaryColor1 =  Color(0xff980ADE);
   //#FFDE6A
-  static const Color selectionColor = Color(0xFFFFDE6A);
+  static const Color selectionColor = Color(0xff408ADE);
   static const Color UnselectionColor = Color(0xFFD7DEEE);
 
 }

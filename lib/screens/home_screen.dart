@@ -22,12 +22,9 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(
-            child: Text(
+        title: Text(
           "weather App",
-          style: TextStyle(color: CustomColors.white),
-        )),
-        backgroundColor: CustomColors.firstGradientColor,
+        ),
       ),
       body: SafeArea(
         child: Obx(() => HandlingDataView(

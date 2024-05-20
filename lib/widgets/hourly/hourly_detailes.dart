@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
 import 'package:weatherapp/core/utils/api_url.dart';
 import 'package:weatherapp/core/constant/custom_colors.dart';
 
+import '../../core/constant/app_theme.dart';
 import '../customImageWidget.dart';
 
 class HourlyDetails extends StatelessWidget {
@@ -43,30 +45,19 @@ class HourlyDetails extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          buildContainerTextWidget(getTime(timeStamp)),
+          Text(getTime(timeStamp), style: AppTheme.textTheme.bodyText1),
           Center(
             child: Container(
               margin: EdgeInsets.all(0.15625.w), // 5/320
               child: NetworkImageWidget(
                 imageUrl: generateWeatherIconUrl(weatherIcon),
                 height: 7.03.h, // 40/568.8888888888889
-                width: 12.5.w,  // 40/320
+                width: 12.5.w, // 40/320
               ),
             ),
           ),
-          buildContainerTextWidget("$temp°")
+          Text("$temp°", style: AppTheme.textTheme.bodyText1)
         ],
-      ),
-    );
-  }
-
-  Widget buildContainerTextWidget(String text) {
-    return Container(
-      child: Text(
-        text,
-        style: TextStyle(
-          color: CustomColors.textColorBlack,
-        ),
       ),
     );
   }

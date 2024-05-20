@@ -7,6 +7,7 @@ import 'package:weatherapp/core/constant/custom_colors.dart';
 import 'package:weatherapp/widgets/hourly/hourly_list.dart';
 
 import '../../controller/global_controller.dart';
+import '../../core/constant/app_theme.dart';
 import '../../model/weather_data_hourly.dart';
 import '../../core/utils/api_url.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +37,7 @@ class HourlyDataWidget extends StatelessWidget {
           child: Center(
             child: Text(
               "Today",
-              style: TextStyle(fontSize: 15.sp), // 18/320
+                style:AppTheme.textTheme.bodyText2
             ),
           ),
         ),

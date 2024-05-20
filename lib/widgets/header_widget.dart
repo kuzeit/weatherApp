@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:weatherapp/controller/global_controller.dart';
 import 'package:sizer/sizer.dart';
+import 'package:weatherapp/core/constant/app_theme.dart';
 
 class HeaderWidget extends StatefulWidget {
   const HeaderWidget({Key? key}) : super(key: key);
@@ -24,7 +25,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
   void initState() {
     final lat = globalController.getLattitude().value;
     final lon = globalController.getLongitude().value;
-    //getAddress(lat, lon);
+    getAddress(lat, lon);
     super.initState();
   }
 
@@ -53,12 +54,12 @@ class _HeaderWidgetState extends State<HeaderWidget> {
         children: [
           Text(
             city,
-            style: TextStyle(fontSize: 25.sp, height: 0.3.h),
+            style: AppTheme.textTheme.headline2?.copyWith(fontSize:20.sp ),
           ),
           Text(
             date,
-            style: TextStyle(
-                fontSize: 10.sp, color: Colors.grey[700], height: 0.264.h),
+            style: AppTheme.textTheme.bodyText1,
+
           ),
         ],
       ),

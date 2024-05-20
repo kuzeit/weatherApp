@@ -75,23 +75,36 @@ class GlobalController extends GetxController {
     return await Geolocator.getCurrentPosition(
             desiredAccuracy: LocationAccuracy.high)
         .then((value) async {
-      // update our lattitude and longitude
+      // Update latitude and longitude
       _lattitude.value = value.latitude;
       _longitude.value = value.longitude;
-      print("value.latitude : ${value.latitude}");
-      print("LocationAccuracy : ${value.longitude}");
+      print("value.latitude: ${value.latitude}");
+      print("value.longitude: ${value.longitude}");
+
+      // Reverse geocoding
+      try {
+        List<Placemark> placemarks = await placemarkFromCoordinates(value.latitude, value.longitude);
+        if (placemarks.isNotEmpty) {
+          String cityName = placemarks[0].locality ?? '';
+          print("City Name: $cityName");
+          // Do something with cityName, such as pass it to the API request
+        }
+      } catch (e) {
+        print("Error during reverse geocoding: $e");
+      }
+
+      // Fetch weather data
       return FetchWeatherAPI()
           .processData(value.latitude, value.longitude)
           .then((value) {
         if (value is WeatherData) {
           weatherData.value = value;
           _statusRequest.value = StatusRequest.success;
-        } else
+        } else {
           _statusRequest.value = value.value;
+        }
       });
-    });
-  }
-
+    });}
   RxInt getIndex() {
     return _currentIndex;
   }

@@ -33,8 +33,6 @@ class HandlingDataView extends StatelessWidget {
   }
 
   Widget buildLottieWidget(String assetName) {
-    return Center(
-      child: Lottie.asset(assetName),
-    );
+    return Center(child: Lottie.asset(assetName,height:45.h,width:86.w ,fit:BoxFit.fill  ));
   }
 }

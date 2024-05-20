@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:weatherapp/screens/home_screen.dart';
 
+import 'core/constant/app_theme.dart';
 import 'core/utils/routes.dart';
 
 void main() {
@@ -21,6 +22,7 @@ void main() {
     {return GetMaterialApp(
       //home: HomeScreen(),
       title: "Weather",
+     theme:AppTheme ,
       debugShowCheckedModeBanner: false,
       getPages: routes,
 
