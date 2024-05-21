@@ -25,7 +25,6 @@ class HourlyDataWidget extends StatelessWidget {
 
   HourlyDataWidget({Key? key, required this.weatherDataHourly})
       : super(key: key);
-  RxInt cardIndex = GlobalController().getIndex();
 
 //
   @override
@@ -35,13 +34,10 @@ class HourlyDataWidget extends StatelessWidget {
         SizedBox(
           height: 7.h,
           child: Center(
-            child: Text(
-              "Today",
-                style:AppTheme.textTheme.bodyText2
-            ),
+            child: Text("Today", style: AppTheme.textTheme.bodyText2),
           ),
         ),
-        HourlyList(weatherDataHourly: weatherDataHourly, cardIndex: cardIndex)
+        HourlyList(weatherDataHourly: weatherDataHourly)
       ],
     );
   }

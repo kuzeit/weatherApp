@@ -3,6 +3,10 @@ import 'package:dartz/dartz.dart';
 import 'package:weatherapp/core/class/statusrequest.dart';
 import 'package:weatherapp/core/functions/checkinternet.dart';
 import 'package:http/http.dart' as http;
+getdata(String AppLink) async {
+  var response = await getDataResponse(AppLink);
+  return response.fold((l) => l, (r) => r);
+}
 
 Future<Either<StatusRequest, Map>> getDataResponse(String linkurl) async {
   if (await checkInternet()) {

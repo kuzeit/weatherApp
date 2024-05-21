@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
@@ -29,7 +30,7 @@ class HourlyDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 29.w,
+        width: 29.w,
       // 90/320
       margin: EdgeInsets.symmetric(horizontal: 1.w),
       padding: EdgeInsets.symmetric(vertical: 2.h),
@@ -56,7 +57,9 @@ class HourlyDetails extends StatelessWidget {
               ),
             ),
           ),
-          Text("$temp°", style: AppTheme.textTheme.bodyText1)
+          Flexible(
+            fit: FlexFit.loose,
+              child: Text("$temp°", style: AppTheme.textTheme.bodyText2))
         ],
       ),
     );

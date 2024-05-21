@@ -5,17 +5,14 @@ import 'package:sizer/sizer.dart';
 import 'package:weatherapp/widgets/hourly/hourly_detailes.dart';
 
 import '../../../model/weather_data_daily.dart';
-import '../../core/utils/api_url.dart';
 import '../../core/constant/custom_colors.dart';
 import '../../model/weather_data_hourly.dart';
 
 class HourlyList extends StatelessWidget {
   final WeatherDataHourly weatherDataHourly;
-  final RxInt cardIndex;
 
   const HourlyList({
     required this.weatherDataHourly,
-    required this.cardIndex,
   });
 
   @override
@@ -29,12 +26,29 @@ class HourlyList extends StatelessWidget {
             : weatherDataHourly.hourly.length,
         itemBuilder: (context, index) {
           return HourlyDetails(
-             temp: weatherDataHourly.hourly[index].temp!,
+            temp: weatherDataHourly.hourly[index].temp!,
             timeStamp: weatherDataHourly.hourly[index].dt!,
             weatherIcon: weatherDataHourly.hourly[index].weather![0].icon!,
           );
         },
       ),
+
+      // SingleChildScrollView(
+      //   scrollDirection: Axis.horizontal,
+      //   child: Row(
+      //
+      //     children: [
+      //       for (int i = 0; i < 12; i++)
+      //         Expanded(
+      //           child: HourlyDetails(
+      //             temp: i==0?6666666666666:weatherDataHourly.hourly[i].temp!,
+      //             timeStamp: weatherDataHourly.hourly[i].dt!,
+      //             weatherIcon: weatherDataHourly.hourly[i].weather![0].icon!,
+      //           ),
+      //         )
+      //     ],
+      //   ),
+      // ),
     );
   }
 }

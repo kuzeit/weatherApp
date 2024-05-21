@@ -236,7 +236,7 @@ class CurrentWeatherMoreDetailsWidget extends StatelessWidget {
       children: [
         currentWeatherCardWidget(
           AppAssets.windSpeed,
-          "${weatherDataCurrent.current.windSpeed}km/h",
+          "${weatherDataCurrent.current.windSpeed!.toStringAsFixed(1)}km/h",
         ),
         currentWeatherCardWidget(
           AppAssets.clouds,

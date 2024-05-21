@@ -1,23 +1,41 @@
+import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 
 import 'package:get/get.dart';
-import 'package:weatherapp/api/fetch_weather.dart';
+import 'package:weatherapp/core/functions/fetch_weather.dart';
 import 'package:weatherapp/core/class/statusrequest.dart';
 import 'package:weatherapp/model/weather_data.dart';
 
 class GlobalController extends GetxController {
   // create various variables
-  Rx<StatusRequest> _statusRequest = StatusRequest.none.obs;
+  final Rx<StatusRequest> _statusRequest = StatusRequest.none.obs;
 
-  //final RxBool _isLoading = true.obs;
+  // final Rx<StatusRequest> _statusRequestHourly = StatusRequest.none.obs;
+  // final Rx<StatusRequest> _statusRequestDaily = StatusRequest.none.obs;
+  // Rx<StatusRequest> getStatusRequestHourly() {
+  //   return _statusRequestHourly;
+  // }
+  //
+  // Rx<StatusRequest> getStatusRequestDaily() {
+  //   return _statusRequestDaily;
+  // }
+
+  late TextEditingController _searchCity;
+
+  final RxBool _onSearch = false.obs;
   final RxDouble _lattitude = 0.0.obs;
   final RxDouble _longitude = 0.0.obs;
-  final RxInt _currentIndex = 0.obs;
   RxString _city = "".obs;
 
-  // instance for them to be called
-  //RxBool checkLoading() => _isLoading;
+  TextEditingController get searchCity => _searchCity;
+
+  set searchCity(TextEditingController value) {
+    _searchCity = value;
+  } // instance for them to be called
+
+  RxBool checkSearching() => _onSearch;
+
   RxDouble getLattitude() => _lattitude;
 
   RxDouble getLongitude() => _longitude;
@@ -37,12 +55,11 @@ class GlobalController extends GetxController {
 
   @override
   void onInit() {
-    if (_statusRequest == StatusRequest.none.obs) {
+    {
       _statusRequest.value = StatusRequest.loading;
       getLocation();
-    } else {
-      getIndex();
     }
+    _searchCity = TextEditingController();
     super.onInit();
   }
 
@@ -80,32 +97,29 @@ class GlobalController extends GetxController {
       _longitude.value = value.longitude;
       print("value.latitude: ${value.latitude}");
       print("value.longitude: ${value.longitude}");
-
+      getWeatherInformation();
       // Reverse geocoding
-      try {
-        List<Placemark> placemarks = await placemarkFromCoordinates(value.latitude, value.longitude);
-        if (placemarks.isNotEmpty) {
-          String cityName = placemarks[0].locality ?? '';
-          print("City Name: $cityName");
-          // Do something with cityName, such as pass it to the API request
-        }
-      } catch (e) {
-        print("Error during reverse geocoding: $e");
-      }
 
       // Fetch weather data
-      return FetchWeatherAPI()
-          .processData(value.latitude, value.longitude)
-          .then((value) {
-        if (value is WeatherData) {
-          weatherData.value = value;
-          _statusRequest.value = StatusRequest.success;
-        } else {
-          _statusRequest.value = value.value;
-        }
-      });
-    });}
-  RxInt getIndex() {
-    return _currentIndex;
+    });
   }
-}
+
+  getWeatherInformation() {
+    return processData(this).then((value) {
+      if (value is WeatherData) {
+        weatherData.value = value;
+        setCity();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _searchCity.dispose();
+    super.dispose();
+  }
+
+  setCity() {
+    _city.value = weatherData.value.current?.current.city ?? ' ';
+  }
+ }

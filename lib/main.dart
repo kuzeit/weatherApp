@@ -22,7 +22,7 @@ void main() {
     {return GetMaterialApp(
       //home: HomeScreen(),
       title: "Weather",
-     theme:AppTheme ,
+      theme:AppTheme ,
       debugShowCheckedModeBanner: false,
       getPages: routes,
 

@@ -13,14 +13,15 @@ class CustomColors {
   static const Color black = Color(0xff000000);
   static const Color primaryColor3 = Colors.yellowAccent;
 
-  static const Color backgroundcolor = Color(0xffF8F9FD) ;
+  static const Color backgroundcolor = Color(0xffF8F9FD);
+
   static const Color primaryColor = Color(0xFFFFEA00);
   static const Color secondColor = Color(0xffc0392b);
   static const Color fourthColor = Color(0xff0d3056);
   static const Color thirdColor = Color.fromARGB(255, 255, 179, 170);
-  static const Color primaryColor1 =  Color(0xff980ADE);
+  static const Color primaryColor1 = Color(0xfff7f2fa);
+
   //#FFDE6A
   static const Color selectionColor = Color(0xff408ADE);
   static const Color UnselectionColor = Color(0xFFD7DEEE);
-
 }
