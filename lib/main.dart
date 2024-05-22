@@ -24,7 +24,7 @@ void main() {
       title: "Weather",
       theme:AppTheme ,
       debugShowCheckedModeBanner: false,
-      getPages: routes,
+       getPages: routes,
 
     );
     },

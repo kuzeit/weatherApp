@@ -4,6 +4,7 @@ class AppAssets {
   static const String baseCurrentURI = 'assets/icons/';
   static const String baseWeatherURI = 'assets/weather/';
   static const String baseLottieURI = 'assets/lottie/';
+  static const String splasScreen = 'assets/splash.jpg';
 
   //request  asset
   static const String clouds = '${baseCurrentURI}clouds.png';

@@ -41,7 +41,8 @@ class searchPage extends StatelessWidget {
                     Text(
                       "Please enter the name of the city you would like to know the weather for",
                       textAlign: TextAlign.center,
-                      style: AppTheme.textTheme.bodyText1!.copyWith(fontSize:13.sp ),
+                      style: AppTheme.textTheme.bodyText1!
+                          .copyWith(fontSize: 13.sp),
                     ),
                     Container(
                       margin: EdgeInsets.symmetric(vertical: 2.h),
@@ -50,7 +51,8 @@ class searchPage extends StatelessWidget {
                           return validInput(val!, 1, 100, "username");
                         },
                         mycontroller: controller.searchCity,
-                        hinttext: "search",
+                        labeltext: "search",
+                        hinttext: "enter city ",
                         iconData: Icons.search,
                         onTapIcon: () {
                           controller.checkSearching().value = true;

@@ -50,6 +50,10 @@ class CustomTextFormAuth extends StatelessWidget {
               fontSize: 13.sp,
               color: CustomColors.grey,
               fontWeight: FontWeight.w400),
+          labelStyle: TextStyle(
+              fontSize: 13.sp,
+              color: CustomColors.grey,
+              fontWeight: FontWeight.w400),
           contentPadding:
               EdgeInsets.symmetric(vertical: 2.5.h, horizontal: 5.w),
           label: Container(
